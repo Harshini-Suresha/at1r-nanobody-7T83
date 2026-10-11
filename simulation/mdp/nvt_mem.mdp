@@ -1,0 +1,40 @@
+; NVT equilibration with position restraints (membrane / 8TH3 complex)
+; Heavy atoms restrained -- produces the familiar CHARMM-GUI restraint only
+; for protein + lipid heads in stages 1-6; here simplified to a single NVT.
+integrator       = md
+dt               = 0.001
+nsteps           = 100000       ; 100 ps
+
+nstxout          = 0
+nstvout          = 0
+nstfout          = 0
+nstlog           = 1000
+nstxout-compressed = 1000
+
+continuation     = no
+constraint_algorithm = h-bonds    ; CHARMM36 style
+constraints      = all-bonds
+
+define           = -DPOSRES
+
+gen_vel          = yes
+gen_temp         = 310
+gen_seed         = 4711
+
+cutoff-scheme    = Verlet
+pbc              = xyz
+coulombtype      = pme
+rcoulomb         = 1.2
+vdwtype          = cutoff
+rvdw             = 1.2
+vdw-modifier     = potential-shift
+DispCorr         = no
+
+tcoupl           = v-rescale
+tc-grps          = Protein POPC SOL_ions
+tau_t            = 1.0 1.0 1.0
+ref_t            = 310 310 310
+pcoupl           = no
+
+comm_mode        = linear
+nstcomm          = 100

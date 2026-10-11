@@ -1,0 +1,40 @@
+; NVT equilibration with position restraints (soluble nanobody systems)
+integrator       = md
+dt               = 0.002
+nsteps           = 100000       ; 200 ps at T=300 K
+
+nstxout          = 0
+nstvout          = 0
+nstfout          = 0
+nstlog           = 5000
+nstxout-compressed = 5000
+
+continuation     = no
+constraint_algorithm = lincs
+constraints      = h-bonds
+lincs_iter       = 1
+lincs_order      = 4
+
+define           = -DPOSRES
+
+; ---- velocity assignment (the per-replicate knob) ----
+gen_vel          = yes
+gen_temp         = 300
+gen_seed         = 101          ; REPLICATE: sed this value 101/202/303/...
+
+cutoff-scheme    = Verlet
+pbc              = xyz
+coulombtype      = PME
+rcoulomb         = 1.0
+vdwtype          = cutoff
+rvdw             = 1.0
+DispCorr         = no
+
+tcoupl           = v-rescale
+tc-grps          = Protein Non-Protein
+tau_t            = 0.1 0.1
+ref_t            = 300 300
+pcoupl           = no
+
+comm_mode        = linear
+nstcomm          = 100

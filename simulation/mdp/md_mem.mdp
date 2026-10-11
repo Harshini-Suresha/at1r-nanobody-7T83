@@ -1,0 +1,39 @@
+; Unrestrained production MD (membrane / 8TH3 complex), semiisotropic
+; PROD_NS is translated into nsteps by 06_run_membrane.sh
+integrator       = md
+dt               = 0.002
+nsteps           = 50000000     ; placeholder (100 ns); overridden by script
+
+nstxout          = 0
+nstvout          = 0
+nstfout          = 0
+nstlog           = 5000
+nstxout-compressed = 500
+nstcalcenergy    = 100
+nstenergy        = 500
+
+continuation     = yes
+constraint_algorithm = h-bonds
+constraints      = all-bonds
+
+cutoff-scheme    = Verlet
+pbc              = xyz
+coulombtype      = pme
+rcoulomb         = 1.2
+vdwtype          = cutoff
+rvdw             = 1.2
+vdw-modifier     = potential-shift
+DispCorr         = no
+
+tcoupl           = v-rescale
+tc-grps          = Protein POPC SOL_ions
+tau_t            = 1.0 1.0 1.0
+ref_t            = 310 310 310
+pcoupl           = C-rescale
+pcoupltype       = semiisotropic
+tau_p            = 5.0
+ref_p            = 1.0 1.0
+compressibility  = 3.0e-4 3.0e-4
+
+comm_mode        = linear
+nstcomm          = 100

@@ -1,0 +1,22 @@
+&general
+sys_name1=8TH3_complex
+startframe=1
+endframe=999999
+interval=10
+forcefields=leaprc.protein.ff14SB,leaprc.lipid17
+
+# MM-GBSA (single-trajectory) for the nanobody/AT1R complex.
+# Index groups (complex / receptor / nanobody) are built by 04_run_mmgbsa.sh.
+&gb
+igb=5
+radii=mbondi2
+saltcon=0.150
+surften=0.0072
+surfoff=0.0
+molsurf=0
+membrane=0
+#
+&decomp
+idecomp=1
+print_res=1
+print_res_wide=1

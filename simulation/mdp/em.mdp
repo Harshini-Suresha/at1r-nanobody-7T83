@@ -1,0 +1,15 @@
+; Steepest-descent energy minimization (soluble nanobody systems)
+integrator  = steep
+nsteps      = 5000
+emtol       = 1000.0
+emstep      = 0.01
+
+nstlist     = 10
+cutoff-scheme = Verlet
+pbc         = xyz
+
+coulombtype = PME
+rcoulomb    = 1.0
+vdwtype     = cutoff
+rvdw        = 1.0
+DispCorr    = no

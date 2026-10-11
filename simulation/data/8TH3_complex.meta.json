@@ -1,0 +1,9 @@
+{
+  "pdb": "8TH3",
+  "rebuilt": true,
+  "note": "locally-refined cryo-EM deposit leaves the nanobody ~2.4 nm off AT1R; translated rigidly to re-establish a physical interface (translation-only, no rotation)",
+  "min_distance_nm": 2.374,
+  "displacement_nm": 4.1294,
+  "n_contacts": 11,
+  "n_clashes": 0
+}

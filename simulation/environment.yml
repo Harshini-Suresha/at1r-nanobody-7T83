@@ -1,0 +1,28 @@
+# Create the MD environment used by the pipeline:
+#   conda env create -f simulation/environment.yml
+# Comes in two flavours; the CUDA one is for GPU nodes / Colab-with-GPU.
+# GROMACS is the engine, gmx_MMPBSA the MM-GBSA workhorse, packmol-memgen
+# builds the 8TH3 membrane system automatically (Amber coordinates) when a
+# CHARMM-GUI build is not preferred.
+name: at1r-nb-md
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - gromacs
+  - ambertools
+  - gmx_mmpbsa
+  - packmol-memgen
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - mdtraj
+  - nglview
+  - ipywidgets
+  - jupyter
+  - requests
+  - biopython
+  - pip
+  - pip:
+      - pdbfixer

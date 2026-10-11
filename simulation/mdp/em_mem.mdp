@@ -1,0 +1,16 @@
+; Energy minimization (membrane / 8TH3 complex) -- CHARMM36m-style
+integrator  = steep
+nsteps      = 20000
+emtol       = 1000.0
+emstep      = 0.01
+
+nstlist     = 10
+cutoff-scheme = Verlet
+pbc         = xyz
+
+coulombtype = pme
+rcoulomb    = 1.2
+vdwtype     = cutoff
+rvdw        = 1.2
+vdw-modifier = potential-shift
+DispCorr    = no

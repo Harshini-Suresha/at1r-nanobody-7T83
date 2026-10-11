@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+
+# Molecular-dynamics run outputs (reproducible via simulation scripts)
+simulation/work/
+simulation/1?????
+
+# Streamlit
+.streamlit/
+
+.DS_Store

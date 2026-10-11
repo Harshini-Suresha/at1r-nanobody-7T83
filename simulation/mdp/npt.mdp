@@ -1,0 +1,42 @@
+; NPT equilibration with position restraints (soluble nanobody systems)
+integrator       = md
+dt               = 0.002
+nsteps           = 250000       ; 500 ps at T=300 K
+
+nstxout          = 0
+nstvout          = 0
+nstfout          = 0
+nstlog           = 5000
+nstxout-compressed = 5000
+
+continuation     = yes          ; velocities already assigned in NVT
+constraint_algorithm = lincs
+constraints      = h-bonds
+lincs_iter       = 1
+lincs_order      = 4
+
+define           = -DPOSRES
+refcoord_scaling = all            ; keep ref coords fixed in resized box
+
+gen_vel          = no
+
+cutoff-scheme    = Verlet
+pbc              = xyz
+coulombtype      = PME
+rcoulomb         = 1.0
+vdwtype          = cutoff
+rvdw             = 1.0
+DispCorr         = no
+
+tcoupl           = v-rescale
+tc-grps          = Protein Non-Protein
+tau_t            = 0.1 0.1
+ref_t            = 300 300
+pcoupl           = Parrinello-Rahman
+pcoupltype       = isotropic
+tau_p            = 2.0
+ref_p            = 1.0
+compressibility  = 4.5e-5
+
+comm_mode        = linear
+nstcomm          = 100
