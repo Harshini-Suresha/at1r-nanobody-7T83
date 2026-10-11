@@ -10,6 +10,20 @@ An interactive structural and molecular-dynamics study of **AT118i4h32**, an ant
 
 The site is a single self-contained `index.html` (React + in-browser calculations: cell volume, Matthews coefficient, sequence charge/hydropathy, box-size estimator, run planner).
 
+## 🚀 Streamlit app
+
+An interactive companion app reproduces the site's in-browser calculations
+plus a 7T83-vs-7T84 variant comparison and the 8TH3 nanobody-receptor contact
+map, with GROMACS `.xvg` upload for your own trajectories.
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Or deploy on [Streamlit Community Cloud](https://share.streamlit.io) with
+this repo, main file `app.py`.
+
 ## 🚀 Open in Colab
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Harshini-Suresha/at1r-nanobody-7T83/blob/main/notebooks/AT118i4h32_analysis.ipynb)
@@ -24,8 +38,12 @@ The site is a single self-contained `index.html` (React + in-browser calculation
 ```
 at1r-nanobody-7T83/
 ├── index.html                        # project website (deployed to Pages)
+├── app.py                            # Streamlit companion app
+├── requirements.txt
 ├── notebooks/
-│   └── AT118i4h32_analysis.ipynb     # Colab-ready analysis (open badge above)
+│   ├── AT118i4h32_analysis.ipynb     # Colab-ready analysis (open badge above)
+│   └── MMP7_docking.ipynb            # MMP-7 docking lab
+├── simulation/                       # GROMACS MD suite (scripts + data/results)
 ├── README.md
 └── .nojekyll
 ```
